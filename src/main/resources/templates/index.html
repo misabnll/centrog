@@ -1,0 +1,51 @@
+
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    
+	<main class="form-signin">
+	  <form th:action="@{/login}" method="post">
+	    <img class="mb-4" src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+	    <h1 class="h3 mb-3 fw-normal">Inicio de sesión</h1>
+	    
+	    <div class="text-center">
+	         <div th:if="${param.error}" class="alert alert-danger" role="alert">
+	         	Credenciales incorrectas
+	         </div>
+	         <div th:if="${param.logout}" class="alert alert-success" role="alert">
+	         	Ha cerrado sesión
+	         </div>
+	     </div>
+	     
+	    <div class="form-floating">
+	      <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="txtUsername" maxlength="25">
+	      <label for="floatingInput">Usuario</label>
+	    </div>
+	    <div class="form-floating">
+	      <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" name="txtPassword">
+	      <label for="floatingPassword">Contraseña</label>
+	    </div>
+
+	    <div class="checkbox mb-3">
+	      <label>
+	        <input type="checkbox" value="remember-me"> Recuérdame
+	      </label>
+	    </div>
+	    <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+	    <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
+	  </form>
+	</main>
+  </body>
+  <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</html>

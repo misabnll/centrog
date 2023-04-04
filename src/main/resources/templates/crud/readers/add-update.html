@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Add Updates</title>
+
+    <!-- Bootstrap core CSS -->
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+  </head>
+  <body>
+	<div th:replace="layouts/header"></div>
+
+	<div class="container-fluid">
+	  <div class="row">
+	  	<div th:replace="layouts/sidebar"></div>
+	    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+	    	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+		        <h1 class="h2">Formulario Reader</h1>
+		        <div class="btn-toolbar mb-2 mb-md-0">
+			          <a href="/centrog/readers" class="btn btn-sm btn-outline-secondary">
+			          	<< Lista
+			          </a>
+		        </div>
+		      </div>
+		      <div class="row">
+	                <div class="col-lg-6">
+	                	<form action="#" th:action="@{/centrog/readers/add-update}" th:object="${Readers}" method="post">
+					      	<div class="form-group">
+							    <label for="name">Nombre</label>
+							    <input type="hidden" th:field="*{id}" id="id">
+							    <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Nombre" maxlength="15" minlength="1" required>
+							    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+					      	</div>
+					      	<br>
+					      	<button type="submit" class="btn btn-primary">Guardar</button>
+						</form>
+	                </div>
+		      </div>
+	    </main>
+	  </div>
+	</div>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  </body>
+</html>
